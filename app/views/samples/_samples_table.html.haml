@@ -1,0 +1,31 @@
+%table.table.table-striped.table-hover.table-bordered.table-condensed
+  %thead
+    %th.text-center #
+    %th.text-center Reported On
+    %th.text-center SHA1
+    %th.text-center Categories
+    %th.text-center Type
+    %th.text-center Size
+    %th.text-center Options
+  %tbody
+    - for sample in @samples
+      %tr{id: "sample-#{sample.id}"}
+        %td= sample.id
+        %td= sample.reportedOn
+        %td= sample.data.sha1
+        %td= sample.categories.join(", ")
+        %td= sample.data.mimeType
+        %td= sample.data.size
+        %td
+          .btn-group
+            = link_to sample, class: "btn btn-sm btn-info",
+              title: "View Sample Details" do
+              %span.glyphicon.glyphicon-eye-open
+            = link_to edit_sample_path(sample), class: "btn btn-sm btn-primary",
+              title: "Update Sample Details" do
+              %span.glyphicon.glyphicon-edit
+            = link_to download_sample_path(sample), class: "btn btn-sm btn-default",
+              title: "Download Sample File" do
+              %span.glyphicon.glyphicon-save
+
+

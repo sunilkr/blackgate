@@ -1,5 +1,6 @@
--# add navigation links to this file 
-= link_to "Incidents", root_path, class: 'navbar-brand'
-= link_to "Samples", root_path, class: 'navbar-brand'
-= link_to "Command&Control", root_path, class: 'navbar-brand'
-= link_to "Reports", root_path, class: 'navbar-brand'
+-# add navigation links to this file
+%li.nav-li#nav-dashboard= link_to "Dashboard", root_path, class: 'active'
+%li.nav-li#nav-incidents= link_to "Incidents", incidents_path
+%li.nav-li#nav-samples= link_to "Samples", samples_path
+%li.nav-li#nav-cnc= link_to "Command&Control", root_path
+%li.nav-li#nav-reports= link_to "Reports", root_path

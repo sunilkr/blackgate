@@ -1,0 +1,9 @@
+= content_for :title, "Incidents"
+%section
+  .col-md-6.col-md-offset-1
+    %h2 Reported Incidents
+    = render "incidents_options"
+%section
+  .col-md-10.col-md-offset-1
+    = render "incidents_table"
+

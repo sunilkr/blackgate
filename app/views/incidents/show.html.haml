@@ -1,0 +1,38 @@
+= content_for :title, "Incident##{@incident.id}"
+%section
+  .col-md-3.col-md-offset-1
+    %h2= "Incident - #{@incident.id}"
+%section
+  .col-md-5
+    .form-horizontal
+      .form-group
+        %label.col-sm-3.control-label Title
+        .col-sm-9
+          %p.form-control-static
+            %strong= @incident.title
+      .form-group
+        %label.col-sm-3.control-label Description
+        .col-sm-9
+          %p.form-control-static= @incident.description
+      .form-group
+        %label.col-sm-3.control-label Reported On
+        .col-sm-9
+          %p.form-control-static= @incident.reportedOn.strftime("%d %B %Y")
+      .form-group
+        %label.col-sm-3.control-label Reported By
+        .col-sm-9
+          %p.from-control-static= @incident.reportedBy.titleize
+      .form-group
+        %label.col-sm-3.control-label Status
+        .col-sm-9
+          %p.from-control-static= @incident.status
+
+  .col-md-7
+    %h4 Samples
+    = render "incident_samples"
+
+%section
+  .col-md-6.col-md-offset-4
+    = link_to "Update Incident", edit_incident_path(@incident), class: "btn btn-md btn-info"
+    = link_to "Upload Sample", new_incident_sample_path(@incident), class: "btn btn-md btn-info"
+    = link_to "Update Source", root_path, class: "btn btn-md btn-info"

@@ -16,6 +16,8 @@ gem 'high_voltage'
 gem 'therubyracer', :platform=>:ruby
 gem 'remotipart', '~> 1.2'
 gem 'russdeep'
+gem 'bootstrap-datepicker-rails'
+gem 'pluggable_js', '~> 2.0.0'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]

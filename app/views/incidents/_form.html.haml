@@ -1,0 +1,45 @@
+-#FIXME: Move common classes to CSS
+%section
+  .col-md-8.col-md-offset-2
+    .row
+      = form_for @incident, html: { role: "form", class: "form-horizontal"} do |f|
+        - if @incident.errors.any?
+          %h3= "#{pluralize(@incident.errors.count, 'error')} were encountered:"
+          %ul
+            - @incident.errors.full_messages.each do |msg|
+              %li.text-danger= msg
+        .form-group
+          = f.label :title, class: "col-sm-2 control-label"
+          .col-sm-10
+            = f.text_field :title, placeholder: "Title...", 
+              class: "form-control"
+            %span.help-block One line about incident.
+        .form-group
+          = f.label :description, class: "col-sm-2 control-label"
+          .col-sm-10
+            = f.text_area :description, rows: "5", 
+              placeholder: "Description...", class: "form-control"
+            %span.help-block Path of found Samples, Observed behaviour, any relevent information.
+        .form-group
+          = f.label :reportedOn, "Reported On", class: "col-sm-2 control-label"
+          .col-sm-2
+            = f.text_field :reportedOn, class: "form-control text-center", 
+                  "data-behaviour" => "datepicker", readonly: true
+        .form-group
+          = f.label :reportedBy, "Reported By", class: "col-sm-2 control-label"
+          .col-sm-2
+            = f.select :reportedBy, 
+                options_for_select(["User1","User2"], @incident.reportedBy),
+                {include_blank: true}, class: "form-control"
+        .form-group
+          = f.label :status, class: "col-sm-2 control-label"
+          .col-sm-2
+            = f.select :status, 
+                options_for_select(['New', 'In Progress','Resolved','Analyzed',
+                                    'Completed','Rejected'], @incident.status|| "New"),
+                {include_blank: false}, class: "form-control"
+        %section
+          .col-sm-offset-2.col-sm-10
+            = f.submit "Submit", class: "btn btn-lg btn-primary"
+            = link_to "Cancel", incidents_path, class: "btn btn-lg btn-default"
+

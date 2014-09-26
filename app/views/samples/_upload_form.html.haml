@@ -1,0 +1,52 @@
+%section
+  .col-md-6.col-md-offset-2
+    .row
+      = form_for @sample, html: {role: "form", class: "form-horizontal"} do |f|
+        - if @sample.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@sample.errors.count, "error")} were enounterd:"
+            %ul
+              - @sample.errors.full_messages.each do |msg|
+                %li= msg
+        .form-group
+          = f.label :incidnet_id, "Incident#", class: "col-sm-2 control-label"
+          .col-sm-10
+            %p.form-control-static
+              %strong= @incident.id
+        .form-group
+          = f.label :reportedOn, "Reported On", class: "col-sm-2 control-label"
+          .col-sm-9
+            %p.form-control-static= @incident.reportedOn
+        .form-group
+          = f.label :status, class: "col-sm-2 control-label"
+          .col-sm-2
+            %p.form-control-static= @incident.status
+        .form-group
+          = f.label :title, "Title", class: "col-sm-2 control-label"
+          .col-sm-10
+            %p.form-control-static= @incident.title
+        .form-group
+          =f.label :description, "Description", class: "col-sm-2 control-label"
+          .col-sm-10
+            %p.form-control-static= @incident.description
+        .form-group
+          = f.label :file, class: "col-sm-2 control-label"
+          .col-sm-10
+            = f.file_field :file, placeholder: "Select sample file",
+                class: "for-control"
+
+        = f.hidden_field :incident_id, value: @incident.id
+        %section
+          .col-sm-10.col-sm-offset-2
+            = f.submit "Upload", class: "btn btn-lg btn-primary"
+            = link_to "Cancel", @incident, class: "btn btn-lg btn-default"
+  .col-md-4
+    %h4 Existing Samples
+    %table.table-striped.table-condensed
+      %tbody
+        - for name in @incident.sample_names
+          %tr
+            %td
+              = link_to name.name, sample_path(name.sample)
+
+

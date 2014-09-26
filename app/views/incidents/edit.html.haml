@@ -1,0 +1,5 @@
+= content_for :title, "Incident##{@incident.id}"
+%section
+  .col-md-3.col-md-offset-1
+    %h2= "Incident - #{@incident.id}"
+= render "form"

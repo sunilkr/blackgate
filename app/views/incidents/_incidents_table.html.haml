@@ -1,0 +1,28 @@
+%table.table.table-striped.table-hover.table-bordered.table-condensed.text-center
+  %thead
+    %th.text-center #
+    %th.text-center Status
+    %th.text-center Title
+    %th.text-center Reported On
+    %th.text-center Reported By
+    %th.text-center Options
+  %tbody
+    - for incident in @incidents
+      %tr{id: "incident-#{incident.id}"}
+        %td= incident.id
+        %td= incident.status
+        %td= incident.title
+        %td= incident.reportedOn
+        %td= incident.reportedBy
+        %td
+          .btn-group
+            = link_to incident, class: "btn btn-sm btn-info", 
+              title: "View Incident Details" do
+              %span.glyphicon.glyphicon-eye-open
+            = link_to edit_incident_path(incident), class: "btn btn-sm btn-primary",
+              title: "Edit Incident Details" do
+              %span.glyphicon.glyphicon-edit
+            = link_to incident, method: :delete, 
+              data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-danger",
+              title: "Delete Incident" do
+              %span.glyphicon.glyphicon-trash
