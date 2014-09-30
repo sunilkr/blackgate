@@ -1,0 +1,18 @@
+.panel.panel-warning
+  .panel-heading
+    Similar Samples
+  .panel-body
+    %p>  
+      Samples with upto 90% of matching
+      %abbr{title: "SSDEEP/Fuzzy Hash"} content.
+  %table.table.table-condensed
+    %thead
+      %th.text-center %
+      %th.text-center Sample
+    %tbody
+      - @sample.similar(90).each do |percent, samples|
+        - samples.each do|similar|
+          %tr
+            %td.text-center= percent
+            %td.text-center
+              = link_to similar.names.first.name, similar

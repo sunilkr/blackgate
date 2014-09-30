@@ -1,1 +1,62 @@
+- content_for :title, "Sample##{@sample.id}"
+%secion
+  .col-md-3.col-md-offset-1
+    %h2= "Sample - #{@sample.id}"
+%section
+  .col-md-7.col-md-offset-1
+    .form-horizontal
+      = render "sample_static_data"
+      .form-group
+        %label.col-sm-3.control-label Categories
+        .col-sm-9
+          - for category in @sample.categories
+            %span.label.label-danger= category
+      .form-group
+        %label.col-sm-3.control-label Status
+        .col-sm-9
+          %p.form-control-static= @sample.status
+      .form-group
+        %label.col-sm-3.control-label First Reported On
+        .col-sm-9
+          %p.form-control-static= @sample.reportedOn
+      .form-group
+        %label.col-sm-3.control-label Group
+        .col-sm-9
+          %p.form-control-static= @sample.group
+      .form-group
+        %label.col-sm-3.control-label Comments
+        .col-sm-9
+          %p.form-control-static= @sample.comment
+      -#TODO Implement following....
+      -if @sample.status == "Analyzed"
+        .form-group
+          %label.col-sm-3.control-label Reports
+          .col-sm-9
+            %p.form-control-static N/A
+      .form-group
+        %label.col-sm-3.control-label Dropper
+        .col-sm-9
+          %p.static-form-control N/A
+      .form-group
+        %label.col-sm-3.control-label Dropped Samples
+        .col-sm-9
+          %p.static-form-control N/A
+
+  .col-md-4
+    .row
+      = render "sample_names"
+    .row
+      = render "similar_samples"
+
+%section
+  .col-md-7.col-md-offset-3
+
+    = link_to "Update Sample", edit_sample_path(@sample), 
+        class: "btn btn-md btn-primary",
+        title: "Update Sample Details"
+    = link_to "Add Command & Control", samples_path, 
+        class: "btn btn-md btn-info"
+    = link_to "Add Sub-Samples", samples_path, 
+        class: "btn btn-md btn-warning",
+        title: "Samples dropped by this sample."
 

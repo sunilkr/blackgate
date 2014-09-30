@@ -10,12 +10,12 @@
   %tbody
     - for sample in @samples
       %tr{id: "sample-#{sample.id}"}
-        %td= sample.id
-        %td= sample.reportedOn
-        %td= sample.data.sha1
-        %td= sample.categories.join(", ")
-        %td= sample.data.mimeType
-        %td= sample.data.size
+        %td.text-center= sample.id
+        %td.text-center= sample.reportedOn
+        %td.text-center= sample.data.sha1
+        %td.text-center= sample.categories.join(", ")
+        %td.text-center= sample.data.mimeType
+        %td.text-center= sample.data.size
         %td
           .btn-group
             = link_to sample, class: "btn btn-sm btn-info",
@@ -24,7 +24,7 @@
             = link_to edit_sample_path(sample), class: "btn btn-sm btn-primary",
               title: "Update Sample Details" do
               %span.glyphicon.glyphicon-edit
-            = link_to download_sample_path(sample), class: "btn btn-sm btn-default",
+            = link_to download_sample_path(sample), class: "btn btn-sm btn-success",
               title: "Download Sample File" do
               %span.glyphicon.glyphicon-save
 

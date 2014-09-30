@@ -1,7 +1,9 @@
 = content_for :title, "Incidents"
 %section
   .col-md-6.col-md-offset-1
-    %h2 Reported Incidents
+    %h2 
+      Reported Incidents 
+      %span.badge>= @incidents.count
     = render "incidents_options"
 %section
   .col-md-10.col-md-offset-1

@@ -96,6 +96,7 @@ class SamplesController < ApplicationController
   # PATCH/PUT /samples/1
   # PATCH/PUT /samples/1.json
   def update
+    params[:sample][:categories].reject!(&:empty?)
     respond_to do |format|
       if @sample.update(sample_params)
         format.html { redirect_to @sample, notice: 'Sample was successfully updated.' }
@@ -133,8 +134,8 @@ class SamplesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def sample_params
       params.require(:sample).permit(:group, :comment, :reportedOn,
-                                     :status, :categories, 
-                                     :analyzedOn)
+                                     :status, :analyzedOn,
+                                     categories: [])
 
     end
 end

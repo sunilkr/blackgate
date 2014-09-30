@@ -1,0 +1,23 @@
+-# List of Names for provided sample.
+.panel.panel-info
+  .panel-heading
+    Reported Names
+    %span.badge= @sample.names.count
+  .panel-body
+    File names having exactly same content.
+  %table.table.table-condensed
+    %thead
+      %th.text-center Name
+      %th.text-center Reported On
+      %th.text-center Incident
+      %tbody
+        - for name in @sample.names
+          %tr{id: "incident_#{name.incident.id}"}
+            %td.text-center
+              = link_to name.name, download_sample_path(@sample, name: name.name),
+                title: "Download"
+            %td.text-center= name.reportedOn
+            %td.text-center
+              = link_to "#{name.incident.id}", incident_path(name.incident),
+                class: "btn btn-sm btn-warning", title: "View Incident"
+

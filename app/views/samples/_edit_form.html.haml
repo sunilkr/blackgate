@@ -1,0 +1,53 @@
+= form_for @sample, html: {role: "form", class: "form-horizontal"} do |f|
+  = if @sample.errors.any?
+    %h3= "#{pluralize(@sample.errors.count, "error")} were encoutered:"
+    %ul
+      - @sample.errors.full_messages.each do|msg|
+        %li.text-danger msg
+  = render "sample_static_data"
+  .form-group
+    = f.label :reportedOn, "First Reported On", class: "col-sm-3 control-label"
+    .col-sm-3
+      %p.static-form-control= @sample.reportedOn
+  .form-group
+    = f.label :status, class: "col-sm-3 control-label"
+    .col-sm-3
+      =f.select :status,
+        options_for_select(["New", "In Progress", "Analyzed", 
+                            "False Positive"],@sample.status||"New"),
+        {include_blank: false}, class: "form-control"
+  .form-group
+    = f.label :categories, class: "col-sm-3 control-label"
+    .col-sm-9.from-control
+      %label.checkbox-inline
+        = f.check_box :categories, {multiple: true}, "Virus", ""
+        Virus
+      %label.checkbox-inline
+        = f.check_box :categories, {multiple: true}, "Trojan", ""
+        Trojan
+      %label.checkbox-inline
+        = f.check_box :categories, {multiple: true}, "Backdoor", ""
+        Backdoor
+      %label.checkbox-inline
+        = f.check_box :categories, {multiple: true}, "Worm", ""
+        Worm
+      %label.checkbox-inline
+        = f.check_box :categories, {multiple: true}, "Rootkit", ""
+        Rootkit
+  .form-group
+    =f.label :group, "Groups", class: "col-sm-3 control-label"
+    .col-sm-9
+      =f.text_field :group, placeholder: "Content groups (comma seperated)", 
+        class: "form-control"
+      %span.help-block e.g. EXE, DLL, SYS, Driver, MS-Word, Windows, Linux, Shellcode, Data, (VB/Java)Script...
+  .form-group
+    =f.label :comment, class: "col-sm-3 control-label"
+    .col-sm-9
+      =f.text_area :comment, rows: 5, placeholder: "Relevent description",
+        class: "form-control"
+      %span.help-block Something worth a note.
+
+  .col-sm-offset-3.col-sm-10
+    = f.submit "Submit", class: "btn btn-lg btn-primary"
+    = link_to "Cancel", @sample, class: "btn btn-lg btn-info"
+
