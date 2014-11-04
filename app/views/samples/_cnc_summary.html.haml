@@ -1,0 +1,19 @@
+.panel.panel-danger
+  .panel-heading
+    C&C Traffic Summary
+    %span.badge= @sample.cnc_traffics.count
+  %table.table.table-condensed
+    %thead
+      %th Date
+      %th Domain
+      %th IP
+    %tbody
+      - for traffic in @sample.cnc_traffics
+        %tr{id: "cnc_traffic_#{traffic.id}"}
+          %td
+            =link_to traffic.accessedOn, sample_cnc_traffic_path(@sample, traffic),
+              title: "View Traffic Details"
+          %td
+            =link_to traffic.cnc.domain, command_and_control_path(traffic.cnc),
+              title: "View C&C Details"
+          %td= traffic.cnc.ip

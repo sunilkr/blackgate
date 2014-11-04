@@ -9,8 +9,9 @@
       .form-group
         %label.col-sm-3.control-label Categories
         .col-sm-9
-          - for category in @sample.categories
-            %span.label.label-danger= category
+          %p.form-control-static
+            - for category in @sample.categories
+              %span.label.label-danger= category
       .form-group
         %label.col-sm-3.control-label Status
         .col-sm-9
@@ -34,19 +35,21 @@
           .col-sm-9
             %p.form-control-static N/A
       .form-group
-        %label.col-sm-3.control-label Dropper
+        %label.col-sm-3.control-label Droppers
         .col-sm-9
-          %p.static-form-control N/A
+          %p.form-control-static N/A
       .form-group
         %label.col-sm-3.control-label Dropped Samples
         .col-sm-9
-          %p.static-form-control N/A
+          %p.form-control-static N/A
 
   .col-md-4
     .row
       = render "sample_names"
     .row
       = render "similar_samples"
+    .row
+      = render "cnc_summary"
 
 %section
   .col-md-7.col-md-offset-3
@@ -54,7 +57,7 @@
     = link_to "Update Sample", edit_sample_path(@sample), 
         class: "btn btn-md btn-primary",
         title: "Update Sample Details"
-    = link_to "Add Command & Control", samples_path, 
+    = link_to "Add Command & Control", new_sample_cnc_traffic_path(@sample), 
         class: "btn btn-md btn-info"
     = link_to "Add Sub-Samples", samples_path, 
         class: "btn btn-md btn-warning",
