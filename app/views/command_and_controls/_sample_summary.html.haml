@@ -1,0 +1,36 @@
+.panel.panel-primary
+  .panel-heading
+    Sample Summary
+  .panel-body
+    .row
+      %label.col-sm-2.text-right SHA1
+      .col-sm-10
+        =@sample.data.sha1
+    .row
+      %label.col-sm-2.text-right Size
+      .col-sm-4
+        = "#{@sample.data.size} Bytes"
+      %label.col-sm-2.text-right Type
+      .col-sm-4
+        = @sample.data.mimeType
+    .row
+      %label.col-sm-2.text-right Status
+      .col-sm-3
+        = @sample.status
+      %label.col-sm-3.text-right Reported On
+      .col-sm-4
+        = @sample.reportedOn
+    .row
+      %label.col-sm-2.text-right Categories
+      .col-sm-9
+        - for category in @sample.categories
+          %span.label.label-danger= category
+  %table.table.table-condensed
+    %thead
+      %th.text-center Incident#
+      %th Name
+    %tbody
+      - @sample.names.each do|name|
+        %tr
+          %td.text-center= name.incident.id
+          %td= name.name

@@ -1,0 +1,30 @@
+%table.table.table-striped.table-hover.table-bordered.table-condensed
+  %thead
+    %th.text-center #
+    %th.text-center Domain
+    %th.text-center IP Address
+    %th.text-center Port
+    %th.text-center Protocol
+    %th.text-center First Access
+    %th.text-center Last Access
+    %th.text-center Options
+  %tbody
+    -for cnc in @cncs
+      %tr{id: "cnc_#{cnc.id}"}
+        %td.text-center= cnc.id
+        %td.text-center= cnc.domain
+        %td.text-center= cnc.ip
+        %td.text-center= cnc.port
+        %td.text-center= cnc.protocol
+        %td.text-center= cnc.first_access
+        %td.text-center= cnc.last_access
+        %td.cnc-options.column-options.text-center
+          .btn-group
+            = link_to cnc, class: "btn btn-sm btn-info",
+              title: "View C&C Details" do
+              %span.glyphicon.glyphicon-eye-open
+            = link_to edit_command_and_control_path(cnc), class: "btn btn-sm btn-primary",
+              title: "Edit C&C Details" do
+              %span.glyphicon.glyphicon-edit
+
+

@@ -1,0 +1,18 @@
+.panel.panel-info
+  .panel-heading
+    Known C&C Servers
+  %table.table
+    %thead
+      %th Accessed On
+      %th Domian
+      %th IP
+      %th Status
+    %tbody
+      -@sample.cnc_traffics.each do |traffic|
+        %tr
+          %td= traffic.accessedOn
+          %td= traffic.cnc.domain
+          %td= traffic.cnc.ip
+          %td= traffic.status
+
+

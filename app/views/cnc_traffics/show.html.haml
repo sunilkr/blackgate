@@ -1,0 +1,58 @@
+- title = "Traffic##{@traffic.id}"
+- title += "::Sample##{@sample.id}" if @sample
+- title += "::C&C##{@cnc.id}" if @cnc
+- content_for :title, title
+%section
+  .col-md-8.col-md-offset-1
+    %h3
+      = "C&C Traffic - #{@traffic.id}"
+      - if @sample
+        %small= "for Sample - #{@sample.id}"
+      -if @cnc
+        %small= "for C&C - #{@cnc.id}"
+%section
+  .col-md-10.col-md-offset-1
+    .panel.panel-primary
+      %table.table.table-bordered.table-hover
+        %thead
+          %th.text-center Accessed On
+          %th.text-center Sample
+          %th.text-center C&amp;C
+          %th.text-center IP
+          %th.text-center Port
+          %th.text-center Protocol
+          %th.text-center Domain
+          %th.text-center URI
+        %tbody
+          %tr
+            %td.text-center= @traffic.accessedOn
+            %td.text-center= link_to @traffic.sample.id, sample_path(@traffic.sample), 
+              class: "btn btn-sm btn-info",  title: "View Sample"
+            %td.text-center= link_to @traffic.cnc.id, command_and_control_path(@traffic.cnc), 
+              class: "btn btn-sm btn-warning", title: "View C&C"
+            %td.text-center= @traffic.cnc.ip
+            %td.text-center= @traffic.cnc.port
+            %td.text-center= @traffic.cnc.protocol
+            %td.text-center= @traffic.cnc.domain
+            %td.text-center= @traffic.url
+%section
+  .col-md-offset-1.col-md-8
+    %section
+      %label.col-sm-3.text-right Complete URL
+      .col-sm-9
+        = @traffic.full_url
+    %section
+      %label.col-sm-3.text-right Status
+      .col-sm-3
+        = @traffic.status
+    %section
+      %label.col-sm-3.text-right Request
+      .col-sm-9
+        %pre= @traffic.request
+    %section
+      %label.col-sm-3.text-right Response
+      .col-sm-9
+        %pre= @traffic.response 
+
+
+

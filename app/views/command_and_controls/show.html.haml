@@ -1,0 +1,41 @@
+- content_for :title, "C&C Server##{@cnc.id}"
+%section
+  .col-md-8.col-md-offset-1
+    %h3 C&amp;C Server - #{@cnc.id}
+%section
+  .col-md-5.col-md-offset-1
+    .form-horizontal
+      .form-group
+        %label.control-label.col-sm-3 Domain
+        .col-sm-9
+          %p.form-control-static= @cnc.domain
+      .form-group
+        %label.control-label.col-sm-3 IP Address
+        .col-sm-9
+          %p.form-control-static= @cnc.ip
+      .form-group
+        %label.control-label.col-sm-3 Port
+        .col-sm-3
+          %p.form-control-static= @cnc.port
+      .form-group
+        %label.control-label.col-sm-3 Protocol
+        .col-sm-3
+          %p.form-control-static= @cnc.protocol
+      .form-group
+        %label.control-label.col-sm-3 First Access
+        .col-sm-9
+          %p.form-control-static= @cnc.first_access
+      .form-group
+        %label.control-label.col-sm-3 Last Access
+        .col-sm-9
+          %p.form-control-static= @cnc.last_access
+  .col-md-6
+    .panel.panel-info
+      .panel-heading
+        C&amp;C Traffic Summary
+      = render 'traffic_table'  
+%section
+  .col-md-offset-4.col-md-5
+    = link_to 'Update C&C', edit_command_and_control_path(@cnc), 
+      class: 'btn btn-md btn-primary', title: "Edit C&C Details"
+    = link_to 'Back', :back, class: 'btn btn-md btn-info'

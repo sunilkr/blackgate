@@ -1,0 +1,21 @@
+- content_for :title, "New Command And Control"
+%section
+  .col-md-offset-1
+    %h3 
+      New Command&Control
+      - if @sample
+        %small= "For Sample - #{@sample.id}"
+%section
+  .col-md-offset-1
+    - if @sample
+      .row
+        .col-md-6
+          = render "sample_summary"
+        .col-md-6
+          = render "sample_cnc_summary"
+        %hr
+    .col-md-8
+      =render "form"
+    
+
+

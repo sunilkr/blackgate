@@ -1,0 +1,40 @@
+= form_for @cnc, html:{class: "form-horizontal", role: "form"} do |f|
+  - if @cnc.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@cnc.errors.count, "error")} encoutered"
+      %ul
+        - @command_and_control.errors.full_messages.each do |msg|
+          %li.text-danger= msg
+
+  .form-group
+    = f.label :domain, class: "col-sm-3 control-label"
+    .col-sm-9
+      = f.text_field :domain, class: "form-control", placeholder: "www.example.com"
+  .form-group
+    = f.label :ip, "IP Address", class: "col-sm-3 control-label"
+    .col-sm-4
+      = f.text_field :ip, class: "form-control", placeholder: "127.0.0.1"
+  .form-group
+    = f.label :protocol, class: "col-sm-3 control-label"
+    .col-sm-3
+      = f.text_field :protocol, class: "form-control", placeholder: "HTTP"
+  .form-group
+    = f.label :port, class: "col-sm-3 control-label"
+    .col-sm-3
+      = f.number_field :port, class: "form-control", placeholder: "80"
+  .form-group.has-feedback
+    = f.label :first_access, "First Accessed", class: "col-sm-3 control-label"
+    .col-sm-4
+      = f.text_field :first_access, class: "form-control text-center",
+        readonly: true, data: {behaviour: "datepicker"}
+      %span.glyphicon.glyphicon-calendar.form-control-feedback
+  .form-group.has-feedback
+    = f.label :last_access, "Last Accessed", class: "col-sm-3 control-label"
+    .col-sm-4
+      = f.text_field :last_access, class: "form-control text-center",
+        readonly: true, data: {behaviour: "datepicker"}
+      %span.glyphicon.glyphicon-calendar.form-control-feedback
+
+  .col-sm-9.col-sm-offset-3
+    = f.submit "Submit", class: "btn btn-lg btn-primary"
+    = link_to " Cancel", :back, class: "btn btn-lg btn-info"

@@ -1,0 +1,12 @@
+- content_for :title, "Command And Control"
+%section
+  .col-md-6.col-md-offset-1
+    %h2
+      Known&nbsp;
+      %abbr{title: "Command And Control"}>C&C 
+      &nbsp;Servers
+      %span.badge>= @cncs.count
+    = render "index_options"
+%section
+  .col-md-10.col-md-offset-1
+    = render "cncs_table"

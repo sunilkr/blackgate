@@ -1,0 +1,17 @@
+- content_for :title, "C&C Server##{@cnc.id}".html_safe
+%section
+  .col-md-6.col-md-offset-1
+    %h1 Update C&amp;C - #{@cnc.id}
+%section
+  .col-md-6
+    = render 'form'
+  .col-md-6
+    .panel.panel-warning
+      .panel-heading
+        Traffic Details
+      .panel-body
+        %p 
+          %strong WARNING!!! 
+          Changing C&amp;C Server details will reflect in all of following traffic.
+          Edit traffic details to change individually.
+      = render 'traffic_table'

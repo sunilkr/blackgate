@@ -1,0 +1,53 @@
+= form_for [@sample, @traffic], html:{class: "form-horizontal", role: "form"} do |f|
+  - if @cnc.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@cnc.errors.count, "error")} encoutered"
+      %ul
+        - @command_and_control.errors.full_messages.each do |msg|
+          %li.text_danger= msg
+  = fields_for :command_and_control do|fcc|
+    .form-group
+      = fcc.label :domain, class: "col-sm-3 control-label"
+      .col-sm-6
+        = fcc.text_field :domain, class: "form-control", placeholder: "www.example.com"
+    .form-group
+      = fcc.label :ip, "IP Address", class: "col-sm-3 control-label"
+      .col-sm-3
+        = fcc.text_field :ip, class: "form-control", placeholder: "127.0.0.1"
+    .form-group
+      = fcc.label :protocol, class: "col-sm-3 control-label"
+      .col-sm-2
+        = fcc.text_field :protocol, class: "form-control", placeholder: "HTTP"
+    .form-group
+      = fcc.label :port, class: "col-sm-3 control-label"
+      .col-sm-2
+        = fcc.number_field :port, class: "form-control", placeholder: "80"
+  .form-group
+    = f.label :url, "URL", class: "col-sm-3 control-label"
+    .col-sm-9
+      = f.text_field :url, class: "form-control", placeholder:"/"
+      %span.help-block Only URL part e.g. /xyz from http//a.com:8080/xyz
+  .form-group
+    = f.label :status, class: "col-sm-3 control-label"
+    .col-sm-2
+      = f.select :status,
+        options_for_select(["Active", "DNS Failed", "Connect Failed"]),
+        {include_blank: false}, class: "form-control"
+  .form-group.has-feedback
+    =f.label :accessdOn, "Accessed On", class: "col-sm-3 control-label"
+    .col-sm-3
+      =f.text_field :accessedOn, data: {behaviour: "datepicker"}, class: "form-control",
+        readonly: true
+      %span.glyphicon.glyphicon-calendar.form-control-feedback
+  .form-group
+    = f.label :request, class: "col-sm-3 control-label"
+    .col-sm-9
+      = f.text_area :request, rows: "10", class: "form-control"
+  .form-group
+    = f.label :response, class: "col-sm-3 control-label"
+    .col-sm-9
+      = f.text_area :response, rows: "10", class: "form-control"
+
+  .col-sm-9.col-sm-offset-3
+    = f.submit "Submit", class: "btn btn-lg btn-primary"
+    = link_to " Cancel", :back, class: "btn btn-lg btn-info"

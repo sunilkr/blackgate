@@ -1,0 +1,26 @@
+%table.table.table-hover.table-bordered
+  %thead
+    %th.text-center Traffic
+    %th.text-center Date
+    %th.text-center URI
+    %th.text-center Status
+    %th.text-center Request?
+    %th.text-center Response?
+    %th.text-center Sample
+  %tbody
+    - for traffic in @cnc.cnc_traffics
+      %tr{id: "cnc_traffic_#{traffic.id}",
+        class: "#{(traffic.status == 'Active')? 'success' : 'danger'}"} 
+        %td.text-center
+          = link_to traffic.id, command_and_control_traffic_path(@cnc, traffic),
+            class: 'btn btn-sm btn-primary', title: "View Traffic Details"
+        %td.text-center= traffic.accessedOn
+        %td.text-center= traffic.url
+        %td.text-center= traffic.status
+        %td.text-center
+          %span{class:"glyphicon glyphicon-#{traffic.request.blank? ? 'remove' : 'ok'}"}
+        %td.text-center
+          %span{class:"glyphicon glyphicon-#{traffic.response.blank? ? 'remove' : 'ok'}"}
+        %td.text-center
+          = link_to traffic.sample.id, sample_path(traffic.sample),
+            class: 'btn btn-sm btn-warning', title: 'View Sample Details'
