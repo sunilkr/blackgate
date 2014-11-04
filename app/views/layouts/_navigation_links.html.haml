@@ -2,5 +2,11 @@
 %li.nav-li#nav-dashboard= link_to "Dashboard", root_path, class: 'active'
 %li.nav-li#nav-incidents= link_to "Incidents", incidents_path
 %li.nav-li#nav-samples= link_to "Samples", samples_path
-%li.nav-li#nav-cnc= link_to "Command&Control", root_path
+%li.nav-li#nav-cnc= link_to "Command&Control", command_and_controls_path
 %li.nav-li#nav-reports= link_to "Reports", root_path
+%li
+  %form.navbar-form{role: 'search'}
+    .form-group.has-feedback
+      %label.sr-only.control-label Search
+      %input.form-control{type:'text', placeholder: 'Search', id: 'search_text'}
+      %span.glyphicon.glyphicon-search.form-control-feedback

@@ -1,4 +1,12 @@
-%p.navbar-text<
-  = link_to '@me', root_path, class: "navbar_link"
-%p.navbar-text<
-  = link_to "Logout", root_path, class: "navbar_link"
+%li.dropdown
+  = link_to "/", class: "dropdown-toggle", 
+    data: {toggle: 'dropdown'}, title: "Logged in as $User" do
+    %span.glyphicon.glyphicon-user
+  %ul.dropdown-menu{role:"menu"}
+    %li
+      = link_to "Profile", root_path
+    %li
+      = link_to "Settings", root_path
+    %li.divider
+    %li
+      = link_to "Logout", root_path
