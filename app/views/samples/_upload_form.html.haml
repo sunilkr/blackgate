@@ -32,8 +32,12 @@
         .form-group
           = f.label :file, class: "col-sm-2 control-label"
           .col-sm-10
-            = f.file_field :file, placeholder: "Select sample file",
-                class: "for-control"
+            .input-group
+              %span.input-group-btn
+                %span.btn.btn-primary.btn-file
+                  Browse&hellip;
+                  = f.file_field :file
+              %input.form-control{type: 'text', readonly: true, placeholder: 'Select sample file'}
 
         = f.hidden_field :incident_id, value: @incident.id
         %section

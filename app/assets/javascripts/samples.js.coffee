@@ -6,3 +6,14 @@
 $ ->
   $(".nav-li").removeClass("active")
   $("#nav-samples").addClass("active")
+  $('.btn-file :file').on 'fileselect', (event, label)->
+    input = $(this).parents('.input-group').find(':text')
+    input.val(label)
+    true
+  $('.btn-file :file').on 'change', ->
+    input = $(this)
+    label = input.val().replace(/\\/g, '/').replace(/.*\//, '')
+    input.trigger('fileselect', label)
+    true
+  true
+
