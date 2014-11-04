@@ -35,6 +35,13 @@ Documentation and Support
 Issues
 -------------
 
+TO-DO
+------------
+* Upload PCAP.
+* Extract C&C info from PCAP.
+* AJAX Support.
+* AJAX Support for file uploads.
+* Add 'families' and is_malicious? to sample.
 Similar Projects
 ----------------
 

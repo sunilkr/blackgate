@@ -1,13 +1,13 @@
 %table.table.table-striped.table-hover.table-condensed
   %thead
-    %th.text-center Name
-    %th.text-center Options
+    %th Name
+    %th.text-right Options
   %tbody
     - for name in @incident.sample_names
       %tr{id:"incident_#{@incident.id}_sample_#{name.sample.id}"}
-        -#FIXME: Taking only first name. Probably incorrent results.
-        %td.tex-tcenter= name.name
-        %td.text-center
+        -#FIXME: Taking only first name. Probably incorrent result.
+        %td= name.name
+        %td.text-right
           .btn-group
             = link_to name.sample, class: "btn btn-sm btn-info", title: "View Sample Details" do
               %span.glyphicon.glyphicon-eye-open

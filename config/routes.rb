@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root to: 'dashboard#index'
 
   resources :incidents do
@@ -9,10 +10,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :samples, only: [:index, :show, :edit, :update, :destroy, :create] do
+  resources :samples, except: [:new] do
+    resources :cnc_traffics, path: 'traffics'
     member do
       get "/download", to: "samples#download"
     end
   end
 
+  resources :command_and_controls, path: 'cncs' do
+    resources :cnc_traffics, only:[:index, :show], as: 'traffics', path: 'traffics'
+  end
 end
