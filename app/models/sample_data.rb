@@ -13,6 +13,7 @@ class SampleData < ActiveRecord::Base
 
   before_validation :preprocess
   before_save :encrypt_and_save
+  after_destroy :delete_file
 
   def decrypted_content
     if File.exist?(self.file)
@@ -48,5 +49,9 @@ class SampleData < ActiveRecord::Base
     self.file = File.join("files", self.key) #TODO take directory from environment
     encrypted = cipher.update(@content) + cipher.final
     IO.binwrite(self.file,encrypted)
+  end
+
+  def delete_file
+    File.delete(self.file) if File.exist?(self.file)
   end
 end
