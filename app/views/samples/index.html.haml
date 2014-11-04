@@ -1,7 +1,9 @@
 = content_for :title, "Samples"
 %section
   .col-md-6.col-md-offset-1
-    %h2 Reported Samples
+    %h2 
+      Reported Samples
+      %span.badge>= @samples.count
 %section
   .col-md-10.col-md-offset-1
     = render "samples_table"
