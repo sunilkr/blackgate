@@ -9,10 +9,10 @@
     Reports
     %span.caret
   %ul.dropdown-menu{role: "menu"}
-    %li.nav-li#nav-reports-all= link_to "All", root_path
+    %li.nav-li#nav-reports-all= link_to "All", reports_path
     %li.divider
-    %li.nav-li#nav-reports-sample= link_to "Sample", root_path
-    %li.nav-li#nav-reports-incidnet= link_to "Incident", root_path
+    %li.nav-li#nav-reports-sample= link_to "Sample", reports_path(type: "sample")
+    %li.nav-li#nav-reports-incidnet= link_to "Incident", reports_path(type: "incident")
 %li
   %form.navbar-form{role: 'search'}
     .form-group.has-feedback
