@@ -3,7 +3,16 @@
 %li.nav-li#nav-incidents= link_to "Incidents", incidents_path
 %li.nav-li#nav-samples= link_to "Samples", samples_path
 %li.nav-li#nav-cnc= link_to "Command&Control", command_and_controls_path
-%li.nav-li#nav-reports= link_to "Reports", root_path
+%li.dropdown
+  = link_to "#", class: 'dropdown-toggle',
+    data: {toggle: "dropdown"} do
+    Reports
+    %span.caret
+  %ul.dropdown-menu{role: "menu"}
+    %li.nav-li#nav-reports-all= link_to "All", root_path
+    %li.divider
+    %li.nav-li#nav-reports-sample= link_to "Sample", root_path
+    %li.nav-li#nav-reports-incidnet= link_to "Incident", root_path
 %li
   %form.navbar-form{role: 'search'}
     .form-group.has-feedback
