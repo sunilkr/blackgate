@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Sha1:
+  = @report.sha1
+%p
+  %b Title:
+  = @report.title
+%p
+  %b Createdon:
+  = @report.createdOn
+%p
+  %b Updatedon:
+  = @report.updatedOn
+%p
+  %b Type:
+  = @report.type
+%p
+  %b Mimetype:
+  = @report.mimeType
+%p
+  %b Size:
+  = @report.size
+%p
+  %b File:
+  = @report.file
+
+= link_to 'Edit', edit_report_path(@report)
+\|
+= link_to 'Back', reports_path

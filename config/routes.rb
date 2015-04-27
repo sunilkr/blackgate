@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :reports
+
   root to: 'dashboard#index'
 
   resources :incidents do
