@@ -23,11 +23,13 @@ This application requires:
 
 - Ruby 2.1.2
 - Rails 4.1.6
+- libfuzzy-dev (SSDEEP)
 
 Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
 
 Getting Started
 ---------------
+Create a 'files' directory in project for uploads to work.
 
 Documentation and Support
 -------------------------
@@ -38,6 +40,8 @@ Issues
 Similar Projects
 ----------------
 
+* CRITS - https://github.com/crits/crits
+
 Contributing
 ------------
 
@@ -46,3 +50,4 @@ Credits
 
 License
 -------
+Your own risk.
